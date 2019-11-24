@@ -1,4 +1,6 @@
-/* eslint-disable object-shorthand */
+let express = require('express');
+let app = express();
+
 const { Pool } = require('pg');
 
 const connectionString = 'postgres://nduta:e1234f@localhost:5432/Teamwork';
@@ -7,8 +9,7 @@ const pool = new Pool({
   connectionString: connectionString,
 });
 
-pool.query('SELECT NOW()', (err, res) => {
-  // eslint-disable-next-line no-console
+pool.query('SELECT NOW()', (err, res) => {  
   console.log(err, res);
   pool.end();
 });
@@ -23,3 +24,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 module.exports = app;
+
+
+

@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'airbnb',
+    "extends" , "eslint:recommended",
   ],
   globals: {
     Atomics: 'readonly',
