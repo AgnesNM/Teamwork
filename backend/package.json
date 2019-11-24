@@ -21,6 +21,7 @@
   "description": "",
   "devDependencies": {
     "eslint": "^6.7.0",
+    "jasmine-node": "^3.0.0",
     "jest": "^24.9.0"
   },
   "dependencies": {
