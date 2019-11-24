@@ -1,0 +1,29 @@
+const Router = require('express-promise-router');
+const db = require('../db');
+
+const router = new Router();
+
+module.exports = router;
+
+router.post('/', async (req, res, next) => {
+  const values = [
+    req.body.first_name,
+    req.body.last_name,
+    req.body.email,
+    req.body.password,      
+    req.body.gender,
+    req.body.job_role,
+    req.body.department,
+    req.body.address,   
+    req.body.emp_id,   
+    req.body.db_role
+  ];
+  const text = await db.query('INSERT INTO employees(first_name,last_name,email,password, gender, job_role, department, address, emp_id, db_role) VALUES($1,$2,$3,$4,$5, $6, $7, $8, $9, $10) RETURNING *');
+  pool.query(text,values, (err,res) => {
+    if(err){   
+        console.log(err.stack);  
+    }  else {
+        console.log(res.rows[0]);         
+      }        
+    });
+});
