@@ -1,4 +1,3 @@
-/* eslint-disable object-shorthand */
 const { Pool } = require('pg');
 
 const connectionString = 'postgres://nduta:e1234f@localhost:5432/Teamwork';
@@ -8,7 +7,7 @@ const pool = new Pool({
 });
 
 pool.query('SELECT NOW()', (err, res) => {
-  // eslint-disable-next-line no-console
+  
   console.log(err, res);
   pool.end();
 });
