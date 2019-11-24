@@ -1,0 +1,22 @@
+{
+  "name": "teamwork2",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgnesNM/Teamwork2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AgnesNM/Teamwork2/issues"
+  },
+  "homepage": "https://github.com/AgnesNM/Teamwork2#readme",
+  "description": "",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
