@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "description": "",
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "coveralls": "^3.0.8"
   }
 }
