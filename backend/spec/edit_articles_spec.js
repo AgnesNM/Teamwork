@@ -22,20 +22,11 @@ describe("employee can edit their articles", () => {
                 done();
             });
         });
-        it("send message body with article id", () => {
-            request.post(base_url, (error, request,body) => {
-                expect(body).toContain(articleId);            });
-
-        });
+       
         it("send message body with article author", () => {
                 request.post(base_url, (error, request,body) => {
                     expect(body).toContain(articleAuthor);
                 });        
-         });
-        it("send message body with author id", () => {
-                        request.post(base_url, (error, request,body) => {
-                            expect(body).toContain(authorId);
-                        });        
-                 });
-        });
+         });        
+    });
 });
