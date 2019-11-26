@@ -1,6 +1,7 @@
 const Router = require('express-promise-router');
 const db = require('../db');
 
+
 const router = new Router();
 
 const { Pool } = require('pg');
@@ -16,6 +17,7 @@ const pool = new Pool({
 module.exports = router;
 
 router.post('/', async (req, res, next) => {
+
   const values = [
     req.body.first_name,
     req.body.last_name,
@@ -38,3 +40,28 @@ router.post('/', async (req, res, next) => {
       }        
     });
 });
+
+
+exports.signup = (req, res, next) => {
+  bcrypt.hash(req.body.password, 10).then(
+    (hash) => {
+      const user = new User({
+        email: req.body.email,
+        password: hash
+      });
+      user.save().then(
+        () => {
+          res.status(201).json({
+            message: 'User added successfully!'
+          });
+        }
+      ).catch(
+        (error) => {
+          res.status(500).json({
+            error: error
+          });
+        }
+      );
+    }
+  );
+};
