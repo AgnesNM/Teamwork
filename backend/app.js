@@ -6,11 +6,11 @@ const pool = new Pool({
   connectionString: connectionString,
 });
 
-pool.query('SELECT NOW()', (err, res) => {
+// pool.query('SELECT NOW()', (err, res) => {
   
-  console.log(err, res);
-  pool.end();
-});
+//   console.log(err, res);
+//   pool.end();
+// });
 
 const express = require('express');
 const bodyParser = require('body-parser');
