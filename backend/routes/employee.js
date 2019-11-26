@@ -4,8 +4,6 @@ const db = require('../db');
 const router = new Router();
 
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
 const { Pool } = require('pg');
 
 const bodyParser = require('body-parser');
@@ -16,7 +14,7 @@ const pool = new Pool({
   connectionString: connectionString,
 });
 
- router.post('/', (req, res, next) => {  
+router.post('/', (req, res, next) => {   
   bcrypt.hash(req.body.password, 10).then(
     (hash) => {
       const values = [
@@ -42,6 +40,7 @@ const pool = new Pool({
         });
     }
   )
-});
+ });
+
 
 module.exports = router;
