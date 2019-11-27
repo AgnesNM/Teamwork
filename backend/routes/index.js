@@ -1,7 +1,5 @@
-routes/index.js
-
-const employees = require('./employee');
+const signIn = require('./sign_in');
 
 module.exports = app => { 
-app.use('/v1/log_in', employees); 
-}
+app.use('/v1/sign_in', signIn); 
+};

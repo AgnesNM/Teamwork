@@ -1,24 +1,20 @@
+const express = require('express');
 const { Pool } = require('pg');
+
+const signInRoutes = require('./routes/index');
+const bodyParser = require('body-parser');
 
 const connectionString = 'postgres://nduta:e1234f@localhost:5432/Teamwork';
 
 const pool = new Pool({
-  connectionString: connectionString,
+connectionString: connectionString,
 });
-
-// pool.query('SELECT NOW()', (err, res) => {
-  
-//   console.log(err, res);
-//   pool.end();
-// });
-
-const express = require('express');
-const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+signInRoutes(app);
 
 module.exports = app;
