@@ -11,14 +11,14 @@ const pool = new Pool({
 connectionString: connectionString,
 });
 
-router.get('/:emp_id', (req, res, next) => { 
-    const {emp_id} = req.params;
-    const text = 'SELECT * FROM employees WHERE emp_id = $1';
-    const {rows} = db.query(text, [emp_id], (err,res) => {
+router.get('/', (req, res, next) => { 
+    
+    const text = 'SELECT * FROM employees';
+    pool.query(text, (err,res) => {
         if(err){
-            return res.status(400).send(error.stack); 
+            console.log(err.stack); 
         } else {
-            return res.status(201).send(rows[0]); 
+            console.log(res.rows); 
         }
     });           
 });
