@@ -23,13 +23,13 @@ router.post('/', async (req, res, next) => {
     req.body.category
     ];
     const text = 'INSERT INTO articles(article_id,article_title,article_author,date_created, category) VALUES($1,$2,$3,$4,$5) RETURNING *';
-const {rows} = await db.query(text,values, (err,res) => {
-if(err){ 
-console.log(err.stack); 
-} else {
-console.log(res.rows[0]); 
-} 
-});
+    const {rows} = await db.query(text,values, (err,res) => {
+        if(err){ 
+            return res.status(400).send(error.stack); 
+        } else {
+            return res.status(201).send(rows[0]); 
+        } 
+    });
 });
 
 module.exports = router;
