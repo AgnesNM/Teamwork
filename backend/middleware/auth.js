@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
-
-const { Pool } = require('pg');
+const bcrypt = require('bcrypt');
 
 const bodyParser = require('body-parser');
+
+const { Pool } = require('pg');
 
 const connectionString = 'postgres://nduta:e1234f@localhost:5432/Teamwork';
 
@@ -10,6 +11,39 @@ const pool = new Pool({
   connectionString: connectionString,
 });
   
+
+
+const validate = (req, res, next) => {
+  bcrypt.compare(req.body.password, hash).then(
+    (valid) => {
+      if (!valid) {
+        return res.status(401).json({
+          error: new Error('Incorrect password!')
+        });
+      }
+      const token = jwt.sign(
+        { employeeId: id },
+        'RANDOM_TOKEN_SECRET',
+        { expiresIn: '24h' });
+      res.status(200).json({
+        employeeId: id,
+        token: token
+      });
+    }
+  ).catch(
+    (error) => {
+      res.status(500).json({
+        error: error
+      });
+    }
+).catch(
+(error) => {
+  res.status(500).json({
+    error: error
+  });
+}
+);
+}
 
 module.exports = (req,res,next) => {
     try {
@@ -26,36 +60,7 @@ module.exports = (req,res,next) => {
           error: new Error('Invalid request!')
         });
       }
+  validate      
 };
 
 
-bcrypt.compare(req.body.password, hash).then(
-          (valid) => {
-            if (!valid) {
-              return res.status(401).json({
-                error: new Error('Incorrect password!')
-              });
-            }
-            const token = jwt.sign(
-              { employeeId: id },
-              'RANDOM_TOKEN_SECRET',
-              { expiresIn: '24h' });
-            res.status(200).json({
-              employeeId: id,
-              token: token
-            });
-          }
-        ).catch(
-          (error) => {
-            res.status(500).json({
-              error: error
-            });
-          }
-    ).catch(
-      (error) => {
-        res.status(500).json({
-          error: error
-        });
-      }
-);
-  
