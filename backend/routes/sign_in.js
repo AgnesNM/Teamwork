@@ -12,11 +12,11 @@ connectionString: connectionString,
 });
 
 router.get ('/:id', async (req, res, next) => {
-    const text = 'SELECT * FROM employees WHERE id = $1';       
+    const text = 'SELECT * FROM employees WHERE id=$1';       
     const { rows } = await db.query(text, [req.params.id], (err,res) => {
         if(err){
             res.status(400).send(err.stack);
-        } else{
+        } else {
             res.status(200).send(res.rows[0]);
         }
     });              
