@@ -11,16 +11,17 @@ const pool = new Pool({
 connectionString: connectionString,
 });
 
-router.get('/', (req, res, next) => { 
-    
-    const text = 'SELECT * FROM employees';
-    pool.query(text, (err,res) => {
+router.get ('/:id', async (req, res, next) => {
+    const text = 'SELECT * FROM employees WHERE id = $1';       
+    const { rows } = await db.query(text, [req.params.id], (err,res) => {
         if(err){
-            console.log(err.stack); 
-        } else {
-            console.log(res.rows); 
+            res.status(400).send(err.stack);
+        } else{
+            res.status(200).send(res.rows[0]);
         }
-    });           
+    });              
+                
 });
-
+     
+    
 module.exports = router;

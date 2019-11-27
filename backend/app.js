@@ -1,7 +1,7 @@
 const express = require('express');
 const { Pool } = require('pg');
 
-const signInRoutes = require('./routes/index');
+const signInRoutes = require('./routes');
 const bodyParser = require('body-parser');
 
 const connectionString = 'postgres://nduta:e1234f@localhost:5432/Teamwork';
