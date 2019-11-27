@@ -1,5 +1,7 @@
+const auth = require('../middleware/auth');
 const employees = require('./employee');
 
-module.exports = app => {
+
+module.exports = app => {  
   app.use('/v1/create_employee', employees);   
 }
