@@ -15,7 +15,7 @@ module.exports = (req,res,next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
         const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-        const employee = decodedToken.password;
+        const employee = decodedToken.email;
             if (req.body.password !== public.password){
                 throw 'you are not allowed to access this protected route!';
             } else {
