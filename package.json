@@ -1,0 +1,38 @@
+{
+  "name": "teamwork2",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "jasmine-node spec",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgnesNM/Teamwork2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AgnesNM/Teamwork2/issues"
+  },
+  "homepage": "https://github.com/AgnesNM/Teamwork2#readme",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^6.7.0",
+    "jasmine-node": "^3.0.0",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.17.0",
+    "coveralls": "^3.0.8",
+    "express": "^4.17.1",
+    "express-promise-router": "^3.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.14.0",
+    "request": "^2.88.0"
+  }
+}
