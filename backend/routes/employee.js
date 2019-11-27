@@ -26,10 +26,10 @@ router.post('/', (req, res, next) => {
         req.body.job_role,
         req.body.department,
         req.body.address,   
-        req.body.emp_id,   
+        req.body.id,   
         req.body.db_role
     ];
-      const text = 'INSERT INTO employees(first_name,last_name,email,password, gender, job_role, department, address, emp_id, db_role) VALUES($1,$2,$3,$4,$5, $6, $7, $8, $9, $10) RETURNING *';
+      const text = 'INSERT INTO employees(first_name,last_name,email,password, gender, job_role, department, address, id, db_role) VALUES($1,$2,$3,$4,$5, $6, $7, $8, $9, $10) RETURNING *';
       
       const {rows} = db.query(text,values, (err,res) => {
         if(err){           
