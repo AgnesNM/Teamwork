@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
     req.body.gender,
     req.body.job_role,
     req.body.department,
-    req.body.address,   
+    req.body.address,
     req.body.emp_id,   
     req.body.db_role
   ];
