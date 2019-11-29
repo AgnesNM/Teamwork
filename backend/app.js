@@ -1,4 +1,6 @@
 const express = require('express');
+
+const path = require('path');
 const { Pool } = require('pg');
 
 const createEmpRoutes = require('./routes/index');
@@ -18,6 +20,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('build'));
 
 createEmpRoutes(app);
 signInRoutes(app);
